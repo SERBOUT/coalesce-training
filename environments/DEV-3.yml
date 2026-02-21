@@ -1,0 +1,17 @@
+fileVersion: 1
+id: "3"
+mappingDefinitions:
+  DATAMART_DIM:
+    database: COALESCE_TRAIN_DEV
+    schema: MART
+  DATAMART_FACT:
+    database: COALESCE_TRAIN_DEV
+    schema: UTIL
+  SRC:
+    database: COALESCE_TRAIN_DEV
+    schema: SRC
+  STAGGING_DEV_TEST:
+    database: COALESCE_TRAIN_DEV
+    schema: STG
+name: DEV
+type: Environment

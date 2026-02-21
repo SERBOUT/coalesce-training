@@ -1,3 +1,7 @@
-defaultStorageMapping: null
+defaultStorageMapping: STAGGING_DEV_TEST
 fileVersion: 1
-locations: []
+locations:
+  - DATAMART_DIM
+  - DATAMART_FACT
+  - SRC
+  - STAGGING_DEV_TEST
