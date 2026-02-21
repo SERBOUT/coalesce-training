@@ -1,0 +1,84 @@
+fileVersion: 1
+id: c07d8bf2-2b50-4b88-bf48-9707e9bb045d
+name: STG_PAYMENTS
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: STAGGING_DEV_TEST
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a325c38e-5fc9-4d8a-a62c-b4ed66b642c0
+          stepCounter: c07d8bf2-2b50-4b88-bf48-9707e9bb045d
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: PAYMENT_METHOD
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 37cfee56-80c9-4649-b5d5-bbcca21d1cdd
+                stepCounter: 6b71159a-ba13-43a3-9ede-747cf5aea45a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9b2abe8a-9cf6-4566-add4-daa90692804e
+          stepCounter: c07d8bf2-2b50-4b88-bf48-9707e9bb045d
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: PAYMENT_STATUS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ad252302-5f75-463d-9f1f-886c80fe0113
+                stepCounter: 6b71159a-ba13-43a3-9ede-747cf5aea45a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c48134ca-cbda-442d-91c6-639749639bf6
+          stepCounter: c07d8bf2-2b50-4b88-bf48-9707e9bb045d
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        name: AMOUNT_EUR
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 49533f15-68f0-4ec8-85bb-5b55b240894d
+                stepCounter: 6b71159a-ba13-43a3-9ede-747cf5aea45a
+            transform: " SUM(\"PAYMENTS\".\"AMOUNT_EUR\")"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          PAYMENTS: 6b71159a-ba13-43a3-9ede-747cf5aea45a
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: PAYMENTS
+        join:
+          joinCondition: |-
+            FROM {{ ref('SRC', 'PAYMENTS') }} "PAYMENTS"
+             GROUP BY "PAYMENT_METHOD", "PAYMENT_STATUS"
+        name: STG_PAYMENTS
+        noLinkRefs: []
+  name: STG_PAYMENTS
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
